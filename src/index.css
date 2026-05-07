@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-background:   hsl(222 47% 9%);
+  --color-foreground:   hsl(213 31% 92%);
+  --color-card:         hsl(222 47% 12%);
+  --color-card-foreground: hsl(213 31% 92%);
+  --color-primary:      hsl(199 89% 48%);
+  --color-primary-foreground: hsl(210 40% 98%);
+  --color-secondary:    hsl(222 47% 18%);
+  --color-muted:        hsl(222 47% 18%);
+  --color-muted-foreground: hsl(215 16% 60%);
+  --color-border:       hsl(222 47% 20%);
+  --color-input:        hsl(222 47% 20%);
+  --color-ring:         hsl(199 89% 48%);
+  --color-safe:         hsl(142 70% 45%);
+  --color-suspicious:   hsl(37 90% 50%);
+  --color-danger:       hsl(0 84% 60%);
+  --radius-sm:   0.5rem;
+  --radius-md:   0.75rem;
+  --radius-lg:   1rem;
+  --radius-xl:   1.5rem;
+  --radius-2xl:  1.75rem;
+  --radius-3xl:  2rem;
+  --font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-family-sans);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+.glass {
+  background-color: color-mix(in srgb, var(--color-card) 60%, transparent);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.cyber-grid {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right,  rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin { animation: spin 1s linear infinite; }
+
