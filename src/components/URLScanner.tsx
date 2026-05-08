@@ -44,8 +44,6 @@ const RadialProgress: React.FC<{ score: number; colorClass: string }> = ({ score
   );
 };
 
-
-
 const URLScanner: React.FC = () => {
   const [url, setUrl] = useState('');
   const [isScanning, setIsScanning] = useState(false);
