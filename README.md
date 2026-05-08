@@ -1,73 +1,52 @@
-# React + TypeScript + Vite
+# PhishDetect: Phishing Analysis & Security Lab
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+PhishDetect is a specialized tool developed for academic and laboratory environments to analyze potential phishing threats through multi-layered heuristic evaluation. It provides a real-time assessment of URLs and Email content based on common attack vectors used in modern cyberattacks.
 
-Currently, two official plugins are available:
+## 🛡️ Core Capabilities
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### 1. URL Heuristic Engine
+The engine performs a 10-point inspection on provided URLs, calculating a risk score based on:
+- **Typosquatting Detection**: Uses Levenshtein distance algorithms to identify brand impersonation (e.g., `g00gle.com` vs `google.com`).
+- **Homograph Analysis**: Identifies character substitution using look-alike characters from different alphabets.
+- **Infrastructure Assessment**: Checks for insecure protocols (HTTP), non-standard ports, and IP-based hosting.
+- **Structural Evaluation**: Analyzes subdomain depth, URL length, and suspicious Top-Level Domains (TLDs).
 
-## React Compiler
+### 2. Email Pattern Analysis
+Analyzes text content for social engineering signatures:
+- **Urgency & Threat Detection**: Identifies psychological triggers like "immediate action required" or legal threats.
+- **Credential Harvesting**: Scans for requests involving passwords, SSNs, or billing information.
+- **Brand Mimicry**: Flags mentions of major brands combined with high-pressure tactics.
+- **Formatting Heuristics**: Detects poor grammar, suspicious link patterns, and generic greetings.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 💻 Technical Stack
 
-## Expanding the ESLint configuration
+- **Frontend**: React 19 + TypeScript
+- **Styling**: Tailwind CSS 4 (Custom Design System)
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Build Tool**: Vite
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
+- Node.js (Latest LTS recommended)
+- npm or yarn
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📊 Heuristic Scoring Model
+The analysis results in a weighted score (0-100):
+- **90 - 100**: Low Risk (Safe)
+- **70 - 89**: Medium Risk (Suspicious)
+- **< 70**: High Risk (Dangerous)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+*Note: This tool is intended for educational purposes and should be used as a supplementary aid for security awareness training.*
